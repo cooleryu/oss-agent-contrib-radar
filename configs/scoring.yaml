@@ -1,0 +1,21 @@
+weights:
+  heat_and_growth: 20
+  direction_match: 20
+  maintenance_activity: 20
+  contributability: 15
+  testing_and_ci: 10
+  merge_probability: 10
+  interview_value: 5
+
+recommendations:
+  strong_yes_min_score: 85
+  maybe_min_score: 70
+  watchlist_min_score: 55
+
+issue_label_weights:
+  bug: 5
+  good first issue: 5
+  help wanted: 4
+  enhancement: 3
+  test: 3
+  documentation: 1

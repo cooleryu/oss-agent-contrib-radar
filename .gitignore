@@ -1,0 +1,16 @@
+outputs/raw/*
+outputs/candidates/*
+outputs/rejected/*
+outputs/reports/*
+outputs/contributions/*
+outputs/weekly_report.md
+workspace/repos/*
+__pycache__/
+*.pyc
+.DS_Store
+.env
+node_modules/
+venv/
+.venv/
+dist/
+target/
