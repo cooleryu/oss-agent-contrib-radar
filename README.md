@@ -158,17 +158,13 @@ docs/operator_playbook.md
 5. 如果修改只对个人 profile 有价值、对项目没有真实价值，直接拒绝。
 6. 如果维护者 review 成本无法被修复价值和测试证据证明，直接拒绝。
 
-已提交贡献的本地档案放在：
+如果使用者需要保存自己的贡献档案，应放在被忽略的本地目录：
 
 ```text
 outputs/contributions/
 ```
 
-当前 IBM PR 档案：
-
-```text
-outputs/contributions/ibm-mcp-context-forge-4446/
-```
+这些档案可能包含个人判断、草稿、复盘和上下文，不应提交到公开仓库。
 
 ## 限流策略
 

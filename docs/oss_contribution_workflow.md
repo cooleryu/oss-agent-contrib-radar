@@ -117,7 +117,8 @@ Reject issues even when they are easy if the only likely PR is a spelling fix, a
 
 ## Stage 4: Mandatory Collision Check Before Coding
 
-This is now a hard gate because of the IBM #4446 lesson.
+This is now a hard gate because late discovery of overlapping PRs creates
+avoidable work for both contributors and maintainers.
 
 Before writing code for any selected issue, check for existing work that may already solve the same problem.
 
@@ -341,35 +342,40 @@ For every submitted PR, record:
 8. What tradeoff or risk was considered.
 9. What it demonstrates about AI Agent / MCP / LLM engineering judgment.
 
-## IBM #4446 Lesson
+## Collision-Check Lesson
 
-We submitted IBM/mcp-context-forge #4446 for issue #4441.
+One early contribution attempt surfaced an important workflow failure: related
+PRs were discovered too late, after implementation work had already started.
 
-The painful lesson: we discovered PR #4282 late. It was already open and covered the same `/mcp` redirect class. That should have been checked before coding.
+The lesson is simple: collision checks must happen before coding, not after a
+fix already exists locally.
 
-The recovery was acceptable because #4446 was made differentiated:
+If a related PR is found late, a new PR is only defensible when it has clear
+differentiated value, such as:
 
-1. It explicitly referenced #4282.
-2. It added a real Starlette `Mount("/mcp")` regression test.
-3. It added `raw_path` synchronization.
-4. It added boundary coverage for `APP_ROOT_PATH`, canonical `/mcp/`, and RFC 9728 well-known paths.
+1. A more precise regression test.
+2. Boundary coverage missing from the existing PR.
+3. A narrower or safer implementation.
+4. Honest public linkage to the overlapping work.
 
 This is still not the preferred path. The preferred path is to find related PRs before implementation.
 
-## ChromeDevTools #1960 Lesson
+## High-Frequency Tooling Lesson
 
-We submitted ChromeDevTools/chrome-devtools-mcp #1960 for issue #1941.
+Another contribution attempt involved a high-frequency browser-agent action. It
+reinforced a separate rule: high-frequency tools need conservative fallbacks and
+strong boundary tests.
 
 What went well:
 
 1. The issue was directly related to browser-agent tool semantics.
 2. The bug was reproducible with a focused test before implementation.
-3. The fix was constrained to native, single-select `<select>` options.
-4. Custom ARIA option behavior was protected with a separate boundary test.
+3. The fix was constrained to the exact native-control path that failed.
+4. Custom widget behavior was protected with a separate boundary test.
 5. The public PR explained both the behavior fix and the tool-description guidance.
-6. CLA failure was resolved by aligning the commit author email with the signed Google CLA identity.
+6. CLA and CI gates were tracked separately from code correctness.
 
-New rules from this PR:
+New rules from this lesson:
 
 1. For browser-agent tools, distinguish snapshot visibility from actual clickable browser geometry.
 2. Prefer explicit tool guidance over hidden magic, but add a narrow fallback when real agents can reasonably choose the wrong tool from the snapshot.
