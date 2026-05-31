@@ -3,6 +3,7 @@ outputs/candidates/*
 outputs/rejected/*
 outputs/reports/*
 outputs/contributions/*
+outputs/private/*
 outputs/weekly_report.md
 workspace/repos/*
 __pycache__/
