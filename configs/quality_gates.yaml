@@ -1,0 +1,94 @@
+mission:
+  purpose: "Find maintainer-friendly OSS contribution opportunities that are real, testable, and worth review time."
+  anti_goal: "Do not use this project for PR farming, profile decoration, or bulk low-value patches."
+  default_outcome_when_uncertain: reject
+
+hard_reject:
+  low_value_changes:
+    - typo_only
+    - spelling_only
+    - naming_only
+    - formatting_only
+    - cosmetic_only
+    - dependency_bump_without_project_context
+  missing_due_diligence:
+    - readme_not_read
+    - contributing_not_read
+    - tests_not_identified
+    - related_issues_not_checked
+    - related_prs_not_checked
+    - main_branch_not_checked
+  unsafe_execution:
+    - no_reproduction_path
+    - no_test_plan
+    - no_risk_analysis
+    - requires_private_credential_without_user_approval
+    - requires_paid_api_without_cost_estimate
+    - writes_or_pushes_without_human_review
+  community_risk:
+    - issue_already_assigned
+    - active_pr_already_solves_issue
+    - maintainer_rejected_direction
+    - high_review_cost_low_project_value
+
+minimum_opportunity_standard:
+  must_have:
+    - clear_project_relevance
+    - maintained_repository
+    - readable_issue_or_failure_mode
+    - reproducible_or_mockable_path
+    - testable_fix
+    - narrow_reviewable_scope
+    - no_active_collision
+    - interview_story_can_be_explained_in_two_minutes
+  should_have:
+    - recent_maintainer_response
+    - recent_merged_prs
+    - ci_available
+    - existing_test_patterns
+    - issue_labels_such_as_bug_help_wanted_or_testing
+
+before_coding_checklist:
+  - read_readme
+  - read_contributing
+  - inspect_test_and_ci_config
+  - read_issue_body
+  - read_issue_comments
+  - search_open_prs_by_issue_number
+  - search_open_prs_by_error_message
+  - search_open_prs_by_function_or_path
+  - inspect_recent_merged_prs_in_same_area
+  - confirm_latest_main_still_has_problem
+  - define_reproduction_plan
+  - define_failing_test_target
+  - define_risk_boundary
+
+pr_readiness_gate:
+  required:
+    - focused_diff
+    - regression_test_added_or_updated
+    - relevant_boundary_tests_added
+    - adjacent_tests_run
+    - lint_or_format_check_run_when_available
+    - git_diff_check_passes
+    - public_body_explains_root_cause_and_risk
+    - human_review_completed_before_formal_submission
+  forbidden:
+    - unrelated_refactor
+    - broad_formatting_churn
+    - unnecessary_dependency
+    - hidden_generated_artifacts
+    - private_data_or_tokens
+    - overstated_title_or_body
+
+reporting_rules:
+  recommendation_values:
+    - Strong yes
+    - Maybe
+    - Watchlist
+    - Reject
+  reject_when_quality_is_weak: true
+  include_rejection_reasons: true
+  include_interview_value: true
+  include_maintainer_risk: true
+  prefer_zero_recommendations_over_low_quality_recommendations: true

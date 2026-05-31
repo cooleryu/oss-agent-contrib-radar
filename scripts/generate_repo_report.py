@@ -30,6 +30,18 @@ def report_lines(scored: List[Dict[str, Any]], rejected: List[Dict[str, Any]]) -
     lines: List[str] = []
     lines.append("# Weekly OSS Agent Contribution Radar")
     lines.append("")
+    lines.append("## Contribution Ethics")
+    lines.append("")
+    lines.append("This report is not a PR farming queue. It is a strict triage artifact.")
+    lines.append("")
+    lines.append("Default behavior:")
+    lines.append("")
+    lines.append("1. Reject typo-only, formatting-only, cosmetic-only, or profile-decoration opportunities.")
+    lines.append("2. Reject issues without repo context, reproduction path, test plan, and collision check.")
+    lines.append("3. Prefer zero recommendations over low-quality recommendations.")
+    lines.append("4. Spend automation and AI tokens to protect maintainer review time.")
+    lines.append("5. Require human review before any final PR submission.")
+    lines.append("")
     lines.append("## Strict Filters")
     lines.append("")
     for index, item in enumerate(

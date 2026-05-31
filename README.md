@@ -25,6 +25,44 @@
 
 宁可推荐 0 个机会，也不要推荐低质量机会。
 
+## 5 分钟快速开始
+
+确认 GitHub CLI 已登录：
+
+```sh
+gh auth status
+```
+
+确认免费 authenticated API 额度：
+
+```sh
+gh api rate_limit --jq '{core:.resources.core, search:.resources.search, code_search:.resources.code_search, graphql:.resources.graphql}'
+```
+
+保守运行第一轮：
+
+```sh
+MAX_REPOS=10 ./scripts/search_repos.sh
+```
+
+查看报告：
+
+```sh
+sed -n '1,220p' outputs/weekly_report.md
+```
+
+完整执行手册：
+
+```text
+docs/operator_playbook.md
+```
+
+机器可读质量门禁：
+
+```text
+configs/quality_gates.yaml
+```
+
 第一版只做筛选和报告：
 
 1. 不 fork。
@@ -108,6 +146,7 @@ outputs/weekly_report.md
 
 ```text
 docs/oss_contribution_workflow.md
+docs/operator_playbook.md
 ```
 
 重点硬门槛：
@@ -116,6 +155,8 @@ docs/oss_contribution_workflow.md
 2. 如果已有 PR 完全覆盖问题，不提交重复 PR。
 3. 如果已有 PR 只覆盖部分问题，新 PR 必须有明确差异价值，并在 PR body 中诚实关联。
 4. 进入代码前必须有本地复现路径、失败测试目标和风险判断。
+5. 如果修改只对个人 profile 有价值、对项目没有真实价值，直接拒绝。
+6. 如果维护者 review 成本无法被修复价值和测试证据证明，直接拒绝。
 
 已提交贡献的本地档案放在：
 
