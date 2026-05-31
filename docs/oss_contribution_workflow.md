@@ -4,6 +4,33 @@ This is the operating workflow for finding, validating, and preparing high-quali
 
 The goal is not to create many PRs. The goal is to find issues where a small, well-tested contribution has a realistic chance of being reviewed, accepted, and explained clearly in an interview.
 
+## Ethical Boundary
+
+This project must not become a PR farming tool.
+
+The workflow exists to spend local automation, careful review time, and AI tokens before bothering maintainers. It should help contributors reject weak opportunities earlier, not mass-produce low-value pull requests.
+
+Non-goals:
+
+1. Generating typo-only, spelling-only, naming-only, formatting-only, or cosmetic PRs.
+2. Creating PRs just to appear active.
+3. Producing automated patches without reading the repository context.
+4. Treating maintainer review time as free.
+5. Chasing labels, badges, or contribution counts over project value.
+6. Using AI output as a substitute for understanding the bug, tests, and risk.
+
+The correct output for a weak opportunity is rejection. Returning zero recommended projects is better than pushing contributors toward noisy or low-quality work.
+
+High-quality use means:
+
+1. Read the project before recommending changes.
+2. Check whether someone else already solved or claimed the work.
+3. Reproduce the problem locally or with a minimal harness.
+4. Add tests that would have caught the failure.
+5. Keep the diff reviewable.
+6. Explain why the change helps the maintainer and future users.
+7. Require human review before submission.
+
 ## Core Principles
 
 1. Do not create low-quality PRs.
@@ -14,6 +41,9 @@ The goal is not to create many PRs. The goal is to find issues where a small, we
 6. Prefer one strong contribution over many weak attempts.
 7. If an opportunity is weak, reject it directly.
 8. Every recommendation must include rationale, risk, and interview value.
+9. Spend automation and AI tokens to protect maintainer time.
+10. Do not optimize for contribution count, labels, or profile decoration.
+11. Use AI to improve diligence, not to bypass understanding.
 
 ## Stage 0: Local And Rate Limit Safety
 
@@ -82,6 +112,8 @@ Prefer issues with:
 6. no assignee and no active claimant.
 
 Reject issues that are vague, controversial, roadmap-heavy, untestable, already assigned, or mostly documentation without engineering value.
+
+Reject issues even when they are easy if the only likely PR is a spelling fix, a superficial rename, a cosmetic UI tweak, or a change that mainly creates review load without improving project behavior.
 
 ## Stage 4: Mandatory Collision Check Before Coding
 
@@ -236,6 +268,8 @@ Quality rule for issue fixes:
 5. A stronger PR is not a larger PR. A stronger PR has clearer scope, better tests, and lower reviewer uncertainty.
 6. When the reported symptom points to a broader class of adjacent failures, cover the nearest realistic boundary cases in tests, then stop.
 7. Do not "fix everything nearby" unless those cases share the same root cause and can be verified without changing the PR's review shape.
+8. Do not stretch a trivial change into a story. If the real contribution is trivial, reject it or keep it honest.
+9. Do not hide uncertainty. If verification is partial, say so in the PR and local notes.
 
 Human PR body rule:
 
@@ -370,4 +404,7 @@ Do not move from issue selection to coding until this checklist is complete:
 [ ] local reproduction path identified
 [ ] failing test target identified
 [ ] PR scope can be explained in 2 minutes
+[ ] change has real project value beyond profile decoration
+[ ] maintainer review cost is justified by the fix and tests
+[ ] no private data, token, local path, or generated artifact is staged
 ```
